@@ -6,10 +6,15 @@ import Sidebar from './components/Sidebar/Sidebar';
 import MainView from './components/MainView/MainView'
 
 
-function App() {
+const App = () => {
+
+  const backgroundImage = 'images/mountain.jpg';
+
   return (
     <s.App>
-      <Sidebar />
+      <Sidebar 
+        backgroundImage={backgroundImage}
+      />
       <MainView />
     </s.App>
   );

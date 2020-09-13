@@ -1,8 +1,10 @@
 import React from 'react';
 import * as s from './Sidebar.styles';
 
-const Sidebar = () => {
-  return <s.SidebarContainer>Sidebar</s.SidebarContainer>
+const Sidebar = props => {
+  const { backgroundImage } = props;
+
+  return <s.SidebarContainer backgroundImage={backgroundImage}>Sidebar</s.SidebarContainer>
 }
 
 export default Sidebar
