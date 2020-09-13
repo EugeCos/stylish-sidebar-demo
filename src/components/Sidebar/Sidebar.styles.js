@@ -22,3 +22,12 @@ export const SidebarHeader = styled.h3`
   letter-spacing: 6px;
   font-family: ZCOOL KuaiLe 
 `
+
+export const MenuItemContainer = styled.div``;
+
+export const MenuItem = styled.div`
+  text-align: center;
+  padding: 6px 20px;
+  font-weight: 600;
+  color: rgba(19, 15, 64)
+`;
