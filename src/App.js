@@ -7,13 +7,14 @@ import MainView from './components/MainView/MainView'
 
 
 const App = () => {
-
   const backgroundImage = 'images/mountain.jpg';
+  const sidebarHeader = 'Yo Yo Travel';
 
   return (
     <s.App>
       <Sidebar 
         backgroundImage={backgroundImage}
+        sidebarHeader={sidebarHeader}
       />
       <MainView />
     </s.App>

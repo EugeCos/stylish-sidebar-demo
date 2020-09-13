@@ -12,4 +12,13 @@ export const SidebarContainer = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  color: #fff
+`
+
+export const SidebarHeader = styled.h3`
+  padding: 20px 0;
+  text-align: center;
+  margin-bottom: 10px;
+  letter-spacing: 6px;
+  font-family: ZCOOL KuaiLe 
 `
