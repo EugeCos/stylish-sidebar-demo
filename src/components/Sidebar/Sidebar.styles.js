@@ -28,12 +28,12 @@ export const MenuItemContainer = styled.div``;
 export const MenuItem = styled.div`
   padding: 6px 20px;
   font-weight: 600;
-  color: rgba(19, 15, 64);  
+  color: ${p => p.selected ? 'rgba(255, 255, 255)' : 'rgba(19, 15, 64)'} ;  
   font-family: ${p => p.font};
 
   &:after {
     content: '';
-    border: 1px solid rgba(225, 112, 85);
+    border: 1px solid ${p => p.selected ? 'rgba(255, 255, 255)' : 'rgba(225, 112, 85)'};
     display: block;
     margin: 8px 0 4px;
   }
