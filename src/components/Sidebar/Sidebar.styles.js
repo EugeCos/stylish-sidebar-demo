@@ -20,14 +20,31 @@ export const SidebarHeader = styled.h3`
   text-align: center;
   margin-bottom: 10px;
   letter-spacing: 6px;
-  font-family: ZCOOL KuaiLe 
+  font-family: ${p => p.font}
 `
 
 export const MenuItemContainer = styled.div``;
 
 export const MenuItem = styled.div`
-  text-align: center;
   padding: 6px 20px;
   font-weight: 600;
-  color: rgba(19, 15, 64)
+  color: rgba(19, 15, 64);  
+  font-family: ${p => p.font};
+
+  &:after {
+    content: '';
+    border: 1px solid rgba(225, 112, 85);
+    display: block;
+    margin: 8px 0 4px;
+  }
 `;
+
+export const Text = styled.p`
+  display: inline
+`
+
+export const Icon = styled.img`
+  height: 16px;
+  width: 16px;
+  padding-right: 20px;
+`

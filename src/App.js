@@ -26,12 +26,18 @@ const App = () => {
     {name: 'Contacts', to: '/contacts', icon: 'icons/contacts.svg', subMenuItems: [] }
   ];
 
+  const fonts = {
+    header: 'ZCOOL KuaiLe',
+    menu: 'Poppins'
+  }
+
   return (
     <s.App>
       <Sidebar
         backgroundImage={backgroundImage}
         sidebarHeader={sidebarHeader}
         menuItems={menuItems}
+        fonts={fonts}
       />
       <MainView />
     </s.App>

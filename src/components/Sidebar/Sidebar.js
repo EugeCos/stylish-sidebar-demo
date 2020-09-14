@@ -5,18 +5,25 @@ const Sidebar = props => {
   const { 
     backgroundImage = '', 
     sidebarHeader = '',
-    menuItems = []
-  } = props; 
+    menuItems = [],
+    fonts = {
+      header: '',
+      menu: ''
+    }
+  } = props;
 
   const menuItemsJSX = menuItems.map((item, index) => {
     return (
-      <s.MenuItem key={index}>{item.name}</s.MenuItem>
+      <s.MenuItem key={index} font={fonts.menu}>
+        <s.Icon src={item.icon} />
+        <s.Text>{item.name}</s.Text>
+      </s.MenuItem>
     )
   })
 
   return (
     <s.SidebarContainer backgroundImage={backgroundImage}>
-      <s.SidebarHeader>{sidebarHeader}</s.SidebarHeader>
+      <s.SidebarHeader font={fonts.menu}>{sidebarHeader}</s.SidebarHeader>
       <s.MenuItemContainer>{menuItemsJSX}</s.MenuItemContainer>
     </s.SidebarContainer>
   )
