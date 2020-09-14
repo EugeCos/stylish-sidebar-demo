@@ -31,12 +31,26 @@ export const MenuItem = styled.div`
   color: ${p => p.selected ? 'rgba(255, 255, 255)' : 'rgba(19, 15, 64)'} ;  
   font-family: ${p => p.font};
 
+  &:hover {
+    color: rgba(255, 255, 255);
+    transition: .1s ease-in all;
+  }
+
   &:after {
     content: '';
     border: 1px solid ${p => p.selected ? 'rgba(255, 255, 255)' : 'rgba(225, 112, 85)'};
     display: block;
     margin: 8px 0 4px;
-  }
+  };
+
+  ${p => !p.selected && `
+    &:hover {
+      &:after {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: .1s ease-in all;
+      }
+    }
+  `}
 `;
 
 export const Text = styled.p`

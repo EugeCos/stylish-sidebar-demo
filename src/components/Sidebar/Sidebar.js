@@ -34,7 +34,7 @@ const Sidebar = props => {
 
   return (
     <s.SidebarContainer backgroundImage={backgroundImage}>
-      <s.SidebarHeader font={fonts.menu}>{sidebarHeader}</s.SidebarHeader>
+      <s.SidebarHeader font={fonts.header}>{sidebarHeader}</s.SidebarHeader>
       <s.MenuItemContainer>{menuItemsJSX}</s.MenuItemContainer>
     </s.SidebarContainer>
   )
