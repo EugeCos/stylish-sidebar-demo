@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const SidebarContainer = styled.div`
-  width: 20%;
+  width: ${p => p.isSidebarOpen ? '20%' : '5%'};
   max-width: 280px;
   min-width: 80px;
   background-image: linear-gradient(
