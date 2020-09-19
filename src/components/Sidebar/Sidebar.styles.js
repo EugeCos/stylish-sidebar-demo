@@ -12,7 +12,8 @@ export const SidebarContainer = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  color: #fff
+  color: #fff;
+  position: relative // Toggler
 `
 
 export const SidebarHeader = styled.h3`
@@ -61,4 +62,33 @@ export const Icon = styled.img`
   height: 16px;
   width: 16px;
   padding-right: 20px;
+`
+
+// Toggler -----------------------------------------------------------------------------
+export const TogglerContainer = styled.div`
+  position: absolute;
+  width: 30%;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+`
+
+export const Toggler = styled.div`
+    height: 40px;
+    cursor: pointer;
+    position: relative; // horizontal lines
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: .25em;
+      height: .1em;
+      width: 100%;
+      background: #fff;
+      box-shadow: 
+        0 .75em 0 0 #fff,
+        0 1.5em 0 0 #fff;        
+    }
 `

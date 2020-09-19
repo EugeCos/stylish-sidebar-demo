@@ -15,6 +15,10 @@ const Sidebar = props => {
   // State
   const [selected, setSelectedMenuItem] = useState(menuItems[0].name);
 
+  const handleMenuItemClick = name => {
+    setSelectedMenuItem(name)
+  }
+
   const menuItemsJSX = menuItems.map((item, index) => {
     const isItemSelected = selected === item.name;
 
@@ -23,6 +27,7 @@ const Sidebar = props => {
         key={index}
         font={fonts.menu}
         selected={isItemSelected}
+        onClick={() => handleMenuItemClick(item.name)}
       >
         <s.Icon src={item.icon} />
         <s.Text>{item.name}</s.Text>
@@ -36,6 +41,9 @@ const Sidebar = props => {
     <s.SidebarContainer backgroundImage={backgroundImage}>
       <s.SidebarHeader font={fonts.header}>{sidebarHeader}</s.SidebarHeader>
       <s.MenuItemContainer>{menuItemsJSX}</s.MenuItemContainer>
+      <s.TogglerContainer>
+        <s.Toggler />
+      </s.TogglerContainer>
     </s.SidebarContainer>
   )
 }
