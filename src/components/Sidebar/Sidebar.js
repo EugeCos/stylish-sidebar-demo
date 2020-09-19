@@ -20,7 +20,9 @@ const Sidebar = props => {
   const [isSidebarOpen, setSidebarState] = useState(true);
   const [header, setHeader] = useState(sidebarHeader.fullName);
 
-  // Effect
+  // Effects
+
+  // Update of header state
   useEffect(() => {
     isSidebarOpen ? setTimeout(() => setHeader(sidebarHeader.fullName), 200) : setHeader(sidebarHeader.shortName);
   }, [isSidebarOpen, sidebarHeader])
@@ -28,6 +30,18 @@ const Sidebar = props => {
   const handleMenuItemClick = name => {
     setSelectedMenuItem(name)
   }
+
+  // Update of sidebar state
+  useEffect(() => {
+    const updateWindowWidth = () => {
+      if (window.innerWidth < 1280 && isSidebarOpen) setSidebarState(false);
+      else setSidebarState(true)
+    }
+
+    window.addEventListener('resize', updateWindowWidth);
+
+    return () => window.removeEventListener('resize', updateWindowWidth);
+  }, [isSidebarOpen]);
 
   const menuItemsJSX = menuItems.map((item, index) => {
     const isItemSelected = selected === item.name;
