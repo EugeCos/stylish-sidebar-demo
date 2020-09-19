@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as s from './Sidebar.styles';
 
 const Sidebar = props => {
   const { 
     backgroundImage = '', 
-    sidebarHeader = '',
+    sidebarHeader = {
+      fullName: '',
+      shortName: ''
+    },
     menuItems = [],
     fonts = {
       header: '',
@@ -15,6 +18,12 @@ const Sidebar = props => {
   // State
   const [selected, setSelectedMenuItem] = useState(menuItems[0].name);
   const [isSidebarOpen, setSidebarState] = useState(true);
+  const [header, setHeader] = useState(sidebarHeader.fullName);
+
+  // Effect
+  useEffect(() => {
+    isSidebarOpen ? setTimeout(() => setHeader(sidebarHeader.fullName), 200) : setHeader(sidebarHeader.shortName);
+  }, [isSidebarOpen, sidebarHeader])
 
   const handleMenuItemClick = name => {
     setSelectedMenuItem(name)
@@ -38,7 +47,7 @@ const Sidebar = props => {
 
   return (
     <s.SidebarContainer backgroundImage={backgroundImage} isSidebarOpen={isSidebarOpen}>
-      <s.SidebarHeader font={fonts.header}>{sidebarHeader}</s.SidebarHeader>
+      <s.SidebarHeader font={fonts.header}>{header}</s.SidebarHeader>
       <s.MenuItemContainer>{menuItemsJSX}</s.MenuItemContainer>
       <s.TogglerContainer onClick={() => setSidebarState(!isSidebarOpen)}>
         <s.Toggler />

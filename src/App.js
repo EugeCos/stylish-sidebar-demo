@@ -8,7 +8,10 @@ import MainView from './components/MainView/MainView'
 
 const App = () => {
   const backgroundImage = 'images/mountain.jpg';
-  const sidebarHeader = 'Yo Yo Travel';
+  const sidebarHeader = {
+    fullName: 'Yo Yo Travel',
+    shortName: 'YO'
+  };
   const menuItems = [
     {name: 'Home', to: '/', icon: 'icons/home.svg', subMenuItems: [] },
     {name: 'About', to: '/about', icon: 'icons/about.svg', subMenuItems: [] },

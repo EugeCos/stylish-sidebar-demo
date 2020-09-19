@@ -13,7 +13,8 @@ export const SidebarContainer = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   color: #fff;
-  position: relative // Toggler
+  position: relative; // Toggler
+  transition: .2s ease-in all
 `
 
 export const SidebarHeader = styled.h3`
