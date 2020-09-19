@@ -28,10 +28,16 @@ export const SidebarHeader = styled.h3`
 export const MenuItemContainer = styled.div``;
 
 export const MenuItem = styled.div`
+  ${p => !p.isSidebarOpen && `
+    text-align: center;
+    ${p.selected && 'background-color: rgba(0, 0, 0, 0.6)'};
+  `};
+
   padding: 6px 20px;
   font-weight: 600;
   color: ${p => p.selected ? 'rgba(255, 255, 255)' : 'rgba(19, 15, 64)'} ;  
   font-family: ${p => p.font};
+  white-space: nowrap;
 
   &:hover {
     color: rgba(255, 255, 255);
@@ -56,13 +62,13 @@ export const MenuItem = styled.div`
 `;
 
 export const Text = styled.p`
-  display: inline
+  display: ${p => p.isSidebarOpen ? 'inline' : 'none'};
 `
 
 export const Icon = styled.img`
+  ${p => p.isSidebarOpen && `padding-right: 20px; transition: .2s ease-in padding-right`};
   height: 16px;
   width: 16px;
-  padding-right: 20px;
 `
 
 // Toggler -----------------------------------------------------------------------------

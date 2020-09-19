@@ -38,9 +38,10 @@ const Sidebar = props => {
         font={fonts.menu}
         selected={isItemSelected}
         onClick={() => handleMenuItemClick(item.name)}
+        isSidebarOpen={isSidebarOpen}
       >
-        <s.Icon src={item.icon} />
-        <s.Text>{item.name}</s.Text>
+        <s.Icon isSidebarOpen={isSidebarOpen} src={item.icon} />
+        <s.Text isSidebarOpen={isSidebarOpen}>{item.name}</s.Text>
       </s.MenuItem>
     )
   });
