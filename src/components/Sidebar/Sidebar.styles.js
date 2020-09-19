@@ -38,6 +38,7 @@ export const MenuItem = styled.div`
   color: ${p => p.selected ? 'rgba(255, 255, 255)' : 'rgba(19, 15, 64)'} ;  
   font-family: ${p => p.font};
   white-space: nowrap;
+  position: relative; // Dropdown Icon
 
   &:hover {
     color: rgba(255, 255, 255);
@@ -70,6 +71,18 @@ export const Icon = styled.img`
   height: 16px;
   width: 16px;
 `
+
+
+// Dropdown icon ----------------------------------------------------------------------
+export const DropdownIcon = styled.span`
+  position: absolute;
+  top: 12px;
+  right: 24px;
+  border: solid ${p => p.selected ? 'rgba(255, 255, 255)' : 'rgba(19, 15, 64)'};
+  border-width: 0 1px 1px 0;
+  padding: 3px;
+  transform: rotate(45deg);
+`;
 
 // Toggler -----------------------------------------------------------------------------
 export const TogglerContainer = styled.div`
