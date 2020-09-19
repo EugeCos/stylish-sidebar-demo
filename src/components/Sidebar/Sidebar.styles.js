@@ -26,7 +26,9 @@ export const SidebarHeader = styled.h3`
 `
 
 export const MenuItemContainer = styled.div``;
+export const ItemContainer = styled.div``;
 
+// Menu items -------------------------------------------------------------
 export const MenuItem = styled.div`
   ${p => !p.isSidebarOpen && `
     text-align: center;
@@ -71,6 +73,10 @@ export const Icon = styled.img`
   height: 16px;
   width: 16px;
 `
+
+// Sub menu items -------------------------------------------------------------------------
+export const SubMenuItemContainer = styled.div``;
+export const SubMenuItem = styled.p``;
 
 
 // Dropdown icon ----------------------------------------------------------------------

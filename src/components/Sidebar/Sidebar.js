@@ -48,20 +48,30 @@ const Sidebar = props => {
 
     const hasSubmenus = !!item.subMenuItems.length;
 
+    const subMenusJSX = item.subMenuItems.map((subMenuItem, subMenuItemIndex) => {
+      return (
+        <s.SubMenuItem key={subMenuItemIndex}>{subMenuItem.name}</s.SubMenuItem>
+      )
+    })
+
     return (
-      <s.MenuItem 
-        key={index}
-        font={fonts.menu}
-        selected={isItemSelected}
-        onClick={() => handleMenuItemClick(item.name)}
-        isSidebarOpen={isSidebarOpen}
-      >
-        <s.Icon isSidebarOpen={isSidebarOpen} src={item.icon} />
-        <s.Text isSidebarOpen={isSidebarOpen}>{item.name}</s.Text>
-        {hasSubmenus && (
-          <s.DropdownIcon selected={isItemSelected} />
-        )}
-      </s.MenuItem>
+      <s.ItemContainer key={index}>
+        <s.MenuItem           
+          font={fonts.menu}
+          selected={isItemSelected}
+          onClick={() => handleMenuItemClick(item.name)}
+          isSidebarOpen={isSidebarOpen}
+        >
+          <s.Icon isSidebarOpen={isSidebarOpen} src={item.icon} />
+          <s.Text isSidebarOpen={isSidebarOpen}>{item.name}</s.Text>
+          {hasSubmenus && (
+            <s.DropdownIcon selected={isItemSelected} />
+          )}
+        </s.MenuItem>
+
+        {/* Display submenus if they exist  */}
+          <s.SubMenuItemContainer>{subMenusJSX}</s.SubMenuItemContainer>
+      </s.ItemContainer>
     )
   });
 
