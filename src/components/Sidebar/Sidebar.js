@@ -64,13 +64,13 @@ const Sidebar = props => {
         >
           <s.Icon isSidebarOpen={isSidebarOpen} src={item.icon} />
           <s.Text isSidebarOpen={isSidebarOpen}>{item.name}</s.Text>
-          {hasSubmenus && (
+          {hasSubmenus && isSidebarOpen && (
             <s.DropdownIcon selected={isItemSelected} />
           )}
         </s.MenuItem>
 
         {/* Display submenus if they exist  */}
-          <s.SubMenuItemContainer>{subMenusJSX}</s.SubMenuItemContainer>
+          <s.SubMenuItemContainer isSidebarOpen={isSidebarOpen}>{subMenusJSX}</s.SubMenuItemContainer>
       </s.ItemContainer>
     )
   });
