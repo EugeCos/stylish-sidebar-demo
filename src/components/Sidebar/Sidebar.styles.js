@@ -41,6 +41,7 @@ export const MenuItem = styled.div`
   font-family: ${p => p.font};
   white-space: nowrap;
   position: relative; // Dropdown Icon
+  transition: .2s ease-in all;
 
   &:hover {
     color: rgba(255, 255, 255);
@@ -51,7 +52,8 @@ export const MenuItem = styled.div`
     content: '';
     border: 1px solid ${p => p.selected ? 'rgba(255, 255, 255)' : 'rgba(225, 112, 85)'};
     display: block;
-    margin: 8px 0 4px;
+    margin: 8px 0 4px;    
+    transition: .1s ease-in all;
   };
 
   ${p => !p.selected && `
