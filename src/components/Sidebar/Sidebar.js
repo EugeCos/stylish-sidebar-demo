@@ -28,10 +28,6 @@ const Sidebar = props => {
     isSidebarOpen ? setTimeout(() => setHeader(sidebarHeader.fullName), 200) : setHeader(sidebarHeader.shortName);
   }, [isSidebarOpen, sidebarHeader])
 
-  const handleMenuItemClick = name => {
-    setSelectedMenuItem(name)
-  }
-
 
   // Update of sidebar state
   useEffect(() => {
@@ -63,7 +59,26 @@ const Sidebar = props => {
     setSubmenus(newSubmenus);
   }, [menuItems]);
 
-  console.log(subMenusStates)
+  
+  const states = {
+    2: {
+      isOpen: false,
+      selected: null
+    }
+  }
+
+
+  const handleMenuItemClick = (name, index) => {
+    setSelectedMenuItem(name);
+
+    const subMenusCopy = JSON.parse(JSON.stringify(subMenusStates));
+
+    if (subMenusStates.hasOwnProperty(index)) { 
+      subMenusCopy[index]['isOpen'] = !subMenusStates[index]['isOpen'] 
+      setSubmenus(subMenusCopy)
+    }
+  }
+
 
   const menuItemsJSX = menuItems.map((item, index) => {
     const isItemSelected = selected === item.name;
@@ -81,7 +96,7 @@ const Sidebar = props => {
         <s.MenuItem           
           font={fonts.menu}
           selected={isItemSelected}
-          onClick={() => handleMenuItemClick(item.name)}
+          onClick={() => handleMenuItemClick(item.name, index)}
           isSidebarOpen={isSidebarOpen}
         >
           <s.Icon isSidebarOpen={isSidebarOpen} src={item.icon} />
@@ -96,6 +111,8 @@ const Sidebar = props => {
       </s.ItemContainer>
     )
   });
+
+  console.log(subMenusStates)
 
   return (
     <s.SidebarContainer backgroundImage={backgroundImage} isSidebarOpen={isSidebarOpen}>
