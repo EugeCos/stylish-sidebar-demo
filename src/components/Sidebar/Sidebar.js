@@ -90,7 +90,9 @@ const Sidebar = props => {
 
     const subMenusJSX = item.subMenuItems.map((subMenuItem, subMenuItemIndex) => {
       return (
-        <s.SubMenuItem key={subMenuItemIndex}>{subMenuItem.name}</s.SubMenuItem>
+        <Link to={`${item.to}${subMenuItem.to}`} style={{ textDecoration: 'none' }} key={subMenuItemIndex}>
+          <s.SubMenuItem>{subMenuItem.name}</s.SubMenuItem>
+        </Link>
       )
     })
 
