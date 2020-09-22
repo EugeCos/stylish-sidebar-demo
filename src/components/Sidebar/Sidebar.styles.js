@@ -51,7 +51,7 @@ export const MenuItem = styled.div`
   &:after {
     content: '';
     border: 1px solid ${p => p.selected ? 'rgba(255, 255, 255)' : 'rgba(225, 112, 85)'};
-    display: block;
+    display: ${p => p.isSidebarOpen && p.selected && p.isOpen ? 'none' : 'block'};
     margin: 8px 0 4px;    
     transition: .1s ease-in all;
   };

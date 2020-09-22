@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import * as s from './Sidebar.styles';
 
 const Sidebar = props => {
@@ -99,6 +100,7 @@ const Sidebar = props => {
           selected={isItemSelected}
           onClick={() => handleMenuItemClick(item.name, index)}
           isSidebarOpen={isSidebarOpen}
+          isOpen={isOpen}
         >
           <s.Icon isSidebarOpen={isSidebarOpen} src={item.icon} />
           <s.Text isSidebarOpen={isSidebarOpen}>{item.name}</s.Text>
@@ -108,12 +110,21 @@ const Sidebar = props => {
         </s.MenuItem>
 
         {/* Display submenus if they exist  */}
-          <s.SubMenuItemContainer isSidebarOpen={isSidebarOpen}>{subMenusJSX}</s.SubMenuItemContainer>
+        <AnimatePresence>
+          {hasSubmenus && isOpen && (
+            <motion.nav 
+              initial={{ opacity: 0, y: -15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35 }}
+              exit={{ opacity: 0, x: -30 }}
+            >
+              <s.SubMenuItemContainer isSidebarOpen={isSidebarOpen}>{subMenusJSX}</s.SubMenuItemContainer>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </s.ItemContainer>
     )
   });
-
-  console.log(subMenusStates)
 
   return (
     <s.SidebarContainer backgroundImage={backgroundImage} isSidebarOpen={isSidebarOpen}>
