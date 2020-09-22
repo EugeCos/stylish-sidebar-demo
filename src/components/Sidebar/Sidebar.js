@@ -61,15 +61,6 @@ const Sidebar = props => {
     setSubmenus(newSubmenus);
   }, [menuItems]);
 
-  
-  const states = {
-    2: {
-      isOpen: false,
-      selected: null
-    }
-  }
-
-
   const handleMenuItemClick = (name, index) => {
     setSelectedMenuItem(name);
 
@@ -78,6 +69,13 @@ const Sidebar = props => {
     if (subMenusStates.hasOwnProperty(index)) { 
       subMenusCopy[index]['isOpen'] = !subMenusStates[index]['isOpen'] 
       setSubmenus(subMenusCopy)
+    }
+    else {
+      for (let item in subMenusStates) {
+        subMenusCopy[item]['isOpen'] = false;
+        subMenusCopy[item]['selected'] = null
+      }
+      setSubmenus(subMenusCopy);
     }
   }
 
