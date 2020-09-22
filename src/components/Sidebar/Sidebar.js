@@ -14,6 +14,14 @@ const Sidebar = props => {
     fonts = {
       header: '',
       menu: ''
+    },
+    colorPalette = {
+      bgColor1: 'rgba(11, 171, 100, 0.8)',
+      bgColor2: 'rgba(59, 183, 143, 0.8)',
+      fontColor: 'rgba(22, 46, 39)',
+      fontColorSelected: 'rgba(255, 255, 255)',
+      dividerColor: 'rgba(122, 204, 178)',
+      selectedBackgroundCollapsedMode: 'dark'
     }
   } = props;
 
@@ -101,6 +109,7 @@ const Sidebar = props => {
           <s.SubMenuItem
             onClick={() => handleSubMenuItemClick(index, subMenuItemIndex)}
             selected={isSubmenuItemSelected}
+            colorPalette={colorPalette}
           >
             {subMenuItem.name}
           </s.SubMenuItem>
@@ -117,11 +126,12 @@ const Sidebar = props => {
             onClick={() => handleMenuItemClick(item.name, index)}
             isSidebarOpen={isSidebarOpen}
             isOpen={isOpen}
+            colorPalette={colorPalette}
           >
             <s.Icon isSidebarOpen={isSidebarOpen} src={item.icon} />
             <s.Text isSidebarOpen={isSidebarOpen}>{item.name}</s.Text>
             {hasSubmenus && isSidebarOpen && (
-              <s.DropdownIcon selected={isItemSelected} isOpen={isOpen} />
+              <s.DropdownIcon selected={isItemSelected} isOpen={isOpen} colorPalette={colorPalette} />
             )}
           </s.MenuItem>
         </Link>
@@ -135,7 +145,7 @@ const Sidebar = props => {
               transition={{ duration: 0.35 }}
               exit={{ opacity: 0, x: -30 }}
             >
-              <s.SubMenuItemContainer isSidebarOpen={isSidebarOpen}>{subMenusJSX}</s.SubMenuItemContainer>
+              <s.SubMenuItemContainer isSidebarOpen={isSidebarOpen} colorPalette={colorPalette}>{subMenusJSX}</s.SubMenuItemContainer>
             </motion.nav>
           )}
         </AnimatePresence>
@@ -144,7 +154,7 @@ const Sidebar = props => {
   });
 
   return (
-    <s.SidebarContainer backgroundImage={backgroundImage} isSidebarOpen={isSidebarOpen}>
+    <s.SidebarContainer backgroundImage={backgroundImage} isSidebarOpen={isSidebarOpen} colorPalette={colorPalette}>
       <s.SidebarHeader font={fonts.header}>{header}</s.SidebarHeader>
       <s.MenuItemContainer>{menuItemsJSX}</s.MenuItemContainer>
       <s.TogglerContainer onClick={() => setSidebarState(!isSidebarOpen)}>

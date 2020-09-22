@@ -1,5 +1,6 @@
 import React from 'react';
 import * as s from './App.styles';
+import * as Palette from './colors'
 
 // Components
 import Sidebar from './components/Sidebar/Sidebar';
@@ -41,6 +42,7 @@ const App = () => {
         sidebarHeader={sidebarHeader}
         menuItems={menuItems}
         fonts={fonts}
+        colorPalette={Palette.brown}
       />
       <MainView />
     </s.App>
