@@ -84,6 +84,7 @@ const Sidebar = props => {
     const isItemSelected = selected === item.name;
 
     const hasSubmenus = !!item.subMenuItems.length;
+    const isOpen = subMenusStates[index]?.isOpen;
 
     const subMenusJSX = item.subMenuItems.map((subMenuItem, subMenuItemIndex) => {
       return (
@@ -102,7 +103,7 @@ const Sidebar = props => {
           <s.Icon isSidebarOpen={isSidebarOpen} src={item.icon} />
           <s.Text isSidebarOpen={isSidebarOpen}>{item.name}</s.Text>
           {hasSubmenus && isSidebarOpen && (
-            <s.DropdownIcon selected={isItemSelected} />
+            <s.DropdownIcon selected={isItemSelected} isOpen={isOpen} />
           )}
         </s.MenuItem>
 

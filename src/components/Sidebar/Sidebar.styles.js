@@ -95,12 +95,13 @@ export const SubMenuItem = styled.p`
 // Dropdown icon ----------------------------------------------------------------------
 export const DropdownIcon = styled.span`
   position: absolute;
-  top: 12px;
+  top: ${p => p.isOpen ? '16px' : '12px'};
   right: 24px;
   border: solid ${p => p.selected ? 'rgba(255, 255, 255)' : 'rgba(19, 15, 64)'};
   border-width: 0 1px 1px 0;
   padding: 3px;
-  transform: rotate(45deg);
+  transform: ${p => p.isOpen ? 'rotate(-135deg)' : 'rotate(45deg)'};
+  transition: .4s;
 `;
 
 // Toggler -----------------------------------------------------------------------------
