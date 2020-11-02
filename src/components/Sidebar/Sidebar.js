@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import * as s from './Sidebar.styles';
@@ -33,6 +33,17 @@ const Sidebar = props => {
 
   // Effects
 
+  // Set selected menu item based on URL pathname
+  useLayoutEffect(() => {
+    const path = window.location.pathname;
+    const parts = path.split('/');
+
+    if (path !== '/' && parts[1].charAt(0).toUpperCase() !== menuItems[0].name) {
+      const selectedItem = parts[1].charAt(0).toUpperCase() + parts[1].slice(1);
+      setSelectedMenuItem(selectedItem)
+    }
+  }, [menuItems])
+
   // Update of header state
   useEffect(() => {
     isSidebarOpen ? setTimeout(() => setHeader(sidebarHeader.fullName), 200) : setHeader(sidebarHeader.shortName);
@@ -42,7 +53,7 @@ const Sidebar = props => {
   // Update of sidebar state
   useEffect(() => {
     const updateWindowWidth = () => {
-      if (window.innerWidth < 1280 && isSidebarOpen) setSidebarState(false);
+      if (window.innerWidth < 1280) setSidebarState(false);
       else setSidebarState(true)
     }
 
@@ -66,8 +77,23 @@ const Sidebar = props => {
       }
     })
 
-    setSubmenus(newSubmenus);
-  }, [menuItems]);
+
+    // Set selected submenu if user landed on one
+    const path = window.location.pathname;
+    const parts = path.split('/');
+
+    if (parts.length === 3) {
+      const selectedItem = parts[1].toLowerCase();
+      const selectedSubItem = parts[2].toLowerCase()
+      const selectedItemIndex = menuItems.findIndex(item => item.name.toLowerCase() === selectedItem);
+      const selectedSubItemIndex = menuItems[selectedItemIndex]?.subMenuItems.findIndex(subItem => subItem.name.toLowerCase() === selectedSubItem);
+
+      if (selectedItemIndex !== -1) newSubmenus[selectedItemIndex]['isOpen'] = true;
+      if (selectedItemIndex !== -1 && selectedSubItemIndex !== -1) newSubmenus[selectedItemIndex]['selected'] = selectedSubItemIndex;
+    }
+
+    Object.keys(subMenusStates).length === 0 && setSubmenus(newSubmenus);
+  }, [menuItems, subMenusStates]);
 
   const handleMenuItemClick = (name, index) => {
     setSelectedMenuItem(name);
